@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<title>Project Apollo</title>
+	<meta charset="utf-8">
+	<script src="//code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="jquery.dataTables.columnFilter.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var datatable = $('#paperstable').DataTable({
+				paging: false,
+				info: false,
+				"columnDefs": [{"targets": 0, "visible": false}, {"targets":1, "searchable": false, "visible": false}],
+				"oLanguage": {"sSearch": ""},
+				"aoColumns": [ null, null ]
+			});
+	
+			//Set placeholder
+			$('input').attr("placeholder", "Search Project Apollo...").focus();
+
+    			//Apply the search
+			datatable.columns().eq( 0 ).each( function ( colIdx ) {
+				$('input').on( 'keyup change', function () {
+					datatable.column(0).visible(true).search(this.value).draw();
+					datatable.column(1).visible(true).draw();
+					if($('input').val() == "") {
+						datatable.column(0).visible(false);
+						datatable.column(1).visible(false);
+					}
+        			});
+    			});
+		});
+	</script>
+	<style type="text/css">
+		::-webkit-input-placeholder {
+   			text-align: center;
+		}
+		:-moz-placeholder { /* Firefox 18- */
+   			text-align: center;  
+		}
+		::-moz-placeholder {  /* Firefox 19+ */
+   			text-align: center;  
+		}
+		:-ms-input-placeholder {  
+   			text-align: center; 
+		}
+		.dataTables_filter input{
+			border: 1px solid transparent;
+			font-size: 60px;
+		}
+		.dataTables_filter {
+			padding-top: 12%;
+			padding-bottom: 3%;
+			text-align: center;
+		}
+		td {
+			padding-left: 20%;
+			padding-bottom: 50px;
+			padding-right: 5%;
+		}
+		.title {
+			padding-left: 26%;
+			color: #FF5050;
+		}
+		tr {
+			font-size: 30px;
+			font-family: 'Oswald', sans-serif;
+		}	
+		#footer {
+			font-size: 10px;
+			font-family: 'Oswald', sans-serif;
+			width: 95%;
+			position: absolute;
+			bottom: 0;
+			left: 5;
+		}
+	</style> 
+	<link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+	<table id="paperstable" width="100%">
+		<tbody>
+			<tr >
+				<td class="title">Book Value</td>
+				 <td>- Price paid for an investment <br>- Total balance sheet value of a company's assets </td></tr>
+			<tr>
+				<td class="title">Outstanding Share</td>
+				<td>- Number of stock currently held by all shareholders</td></tr>
+		
+	
+			<tr>
+				<td class="title">Market capitalization</td>
+				<td>- Total $ value of all outstanding shares<br>- Formula: price per share * number of outstanding shares</td></tr>
+			<tr>
+				<td class="title">Bottom line</td>
+				<td>- Net earnings, net income, or earnings per share</td></tr>
+			<tr>
+				<td class="title">Top line</td>
+				<td>- Gross sales or revenues</td></tr>
+			<tr>
+				<td class="title">Barrel</td>
+				<td>- Unit used to quantify oil<br>- 119 liters or 31.5 gallons</td></tr>
+			<tr>
+				<td class="title">OECD</td>
+				<td>- Organization for Economic Co-operation &amp; Development<br>- A think tank of collective countries that advises governments on ecnomic and social challenges</td></tr>
+			<tr>
+				<td class="title">Profit</td>
+				<td>- Total revenues minus total expensess</td></tr>
+			<tr>
+				<td class="title">S&amp;P's 500</td>
+				<td>- Standard &amp; Poor's 500, an American stock market index based on market cap of 500 large companies on NYSE or NASDAQ</td></tr>
+
+
+
+
+		</tbody>	
+	</table>
+	<div id="footer">Long Tran &copy; 2015</div>
+</html>
